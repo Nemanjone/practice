@@ -1,4 +1,6 @@
 
+package jedinica;
+
 public class Vreme {
 
 	private double sekunde;

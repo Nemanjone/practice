@@ -1,3 +1,4 @@
+package jedinica;
 
 public class Brzina {
 
@@ -31,5 +32,14 @@ public class Brzina {
 	public void addKiloMetersPerHours(double kmph) {
 		this.mps+=kmph / 3.6;
 	}
+
+	public void add(Brzina brzina) {
+		this.mps+=brzina.toMetersPerSeconds();
+	}
 	
+	public Dužina preðeniPut(Vreme vreme) {
+		return Dužina.fromMeters(this.mps * vreme.toSeconds());
+	}
+	
+
 }

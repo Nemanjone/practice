@@ -1,19 +1,22 @@
+package jedinica;
 
-public class Put {
+public class Dužina {
 	
 	private double metri;
+	
+	
 
-	private Put(double metri) {
+	private Dužina(double metri) {
 		super();
 		this.metri = metri;
 	}
 	
-	public static Put fromMeters (double metri) {
-		return new Put (metri);
+	public static Dužina fromMeters (double metri) {
+		return new Dužina (metri);
 	} 
 	
-	public static Put fromKilometres (double kilometri) {
-		return new Put (kilometri * 1000);
+	public static Dužina fromKilometres (double kilometri) {
+		return new Dužina (kilometri * 1000);
 	} 
 	
 	public double toMeters() {
@@ -31,7 +34,15 @@ public class Put {
 	public void addKilometres(double kilometara) {
 		this.metri+=kilometara * 1000;
 	}
-	
+
+	public void add(Dužina dužina) {
+		// TODO Auto-generated method stub
+		this.metri+=metri;
+	}
 	
 
+	
+		
 }
+
+
