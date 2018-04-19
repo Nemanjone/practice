@@ -21,10 +21,11 @@ public class NBA  {            //name, pts, reb, ast, stl, blk
 
 
 			while (tastatura.hasNextLine()) {
-				if (tastatura.nextLine().startsWith("name")) {	           //da se resim prvog reda
+				String line = tastatura.nextLine();
+				if (line.startsWith("name")) {	           //da se resim prvog reda
 				}
 				else  {
-					String igracPodaci = (String) tastatura.nextLine();
+					String igracPodaci = line;
 					String [] deo = igracPodaci.split(",");
 
 					String ime = deo[0];
@@ -81,7 +82,7 @@ public class NBA  {            //name, pts, reb, ast, stl, blk
 
 	public static void main(String[] args) {
 
-		List<Igrac> lista = ucitajIgraca("srpski_igraci_nba_2017_18 (1).csv");
+		List<Igrac> lista = ucitajIgraca("srpski_igraci_nba_2017_18.csv");
 
 		Scanner tastatura = new Scanner(System.in);
 
@@ -96,7 +97,7 @@ public class NBA  {            //name, pts, reb, ast, stl, blk
 		System.out.println("   4. Ukradene lopte");
 		System.out.println("   5. Blokade");
 		System.out.println();
-		System.out.println("Unesite broj opcije koju želite: ");
+		System.out.println("Unesite broj opcije koju ï¿½elite: ");
 
 		int brojOpcije = tastatura.nextInt();
 
@@ -104,19 +105,19 @@ public class NBA  {            //name, pts, reb, ast, stl, blk
 			if(igrac.getIme().toUpperCase() == imeIgraca.toUpperCase().trim()) {
 				switch (brojOpcije) {
 				case 1:
-					System.out.println(igrac.getIme() + " proseèno ostvaruje " + igrac.getPoeni() + " poena po utakmici.");
+					System.out.println(igrac.getIme() + " proseï¿½no ostvaruje " + igrac.getPoeni() + " poena po utakmici.");
 					break;
 				case 2:
-					System.out.println(igrac.getIme() + " proseèno ostvaruje " + igrac.getSkokovi() + " skokova po utakmici.");
+					System.out.println(igrac.getIme() + " proseï¿½no ostvaruje " + igrac.getSkokovi() + " skokova po utakmici.");
 					break;
 				case 3:
-					System.out.println(igrac.getIme() + " proseèno ostvaruje " + igrac.getAsistencije() + " asistencija po utakmici.");
+					System.out.println(igrac.getIme() + " proseï¿½no ostvaruje " + igrac.getAsistencije() + " asistencija po utakmici.");
 					break;
 				case 4:
-					System.out.println(igrac.getIme() + " proseèno ostvaruje " + igrac.getUkradeneLopte() + " ukradene lopte po utakmici.");
+					System.out.println(igrac.getIme() + " proseï¿½no ostvaruje " + igrac.getUkradeneLopte() + " ukradene lopte po utakmici.");
 					break;
 				case 5:
-					System.out.println(igrac.getIme() + " proseèno ostvaruje " + igrac.getBlokade() + " blokade po utakmici.");
+					System.out.println(igrac.getIme() + " proseï¿½no ostvaruje " + igrac.getBlokade() + " blokade po utakmici.");
 
 					break;
 				default:
