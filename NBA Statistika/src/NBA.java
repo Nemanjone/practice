@@ -104,12 +104,19 @@ public class NBA  {
 
 		String imeIgraca = tastatura.nextLine();
 
-		for (String kljuc : mapa.keySet()) {
-			if (imeIgraca.equalsIgnoreCase(kljuc)) {
-				Igrac vrednost = mapa.get(kljuc);
-				System.out.println("Statistika: " + kljuc + " " + vrednost);
-			}
+//		for (String kljuc : mapa.keySet()) {
+//			if (imeIgraca.equalsIgnoreCase(kljuc)) {
+//				Igrac vrednost = mapa.get(kljuc);
+//				System.out.println("Statistika: " + kljuc + " " + vrednost);
+//			}
+//		}
+//		
+		Igrac vrednost;
+		if (mapa.containsKey(imeIgraca)) {
+			vrednost = mapa.get(imeIgraca);
 		}
+		
+		
 
 		System.out.println();
 
