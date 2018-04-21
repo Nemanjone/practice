@@ -104,67 +104,70 @@ public class NBA  {
 
 		String imeIgraca = tastatura.nextLine();
 
+
 		Igrac vrednost;
 
 		if (mapa.containsKey(imeIgraca)) {
 			vrednost = mapa.get(imeIgraca);
 			System.out.println("Statistika: " + imeIgraca + " " + vrednost);
+
+
+			System.out.println();
+
+			System.out.println("Unesite ime igraca i kategoriju koja Vas zanima: ");
+			System.out.println("(Npr. Bogdan_Bogdanovic,poeni)");
+
+			String podatak = tastatura.nextLine();
+			String [] deoPodatka = podatak.split(",");
+			String ime = deoPodatka[0];
+			String kategorija = deoPodatka[1];
+
+
+			if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("asistencije".trim())) {                              
+				System.out.println(mapa.get(ime).getAsistencije());									 
+
+			}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("poeni".trim())) {
+				System.out.println(mapa.get(ime).getPoeni());
+
+			}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("skokovi".trim())) {
+				System.out.println(mapa.get(ime).getSkokovi());
+
+			}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("blokade".trim())) {
+				System.out.println(mapa.get(ime).getBlokade());
+
+			}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("ukradene lopte".trim())) {
+				System.out.println(mapa.get(ime).getUkradeneLopte());
+			}
+
+			System.out.println();
+
+			System.out.println("Unesite novog igraca na listu.");
+
+			System.out.println("Unesite  ime igraca: ");
+			String imeIgracaNovo = tastatura.next();
+			System.out.println("Unesite broj poena: ");
+			String brojPoena = tastatura.next();
+			System.out.println("Unestite broj skokova: ");
+			String brojSkokova = tastatura.next();
+			System.out.println("Unesite broj asistencija: ");
+			String brojAsistencija = tastatura.next();
+			System.out.println("Unesite broj ukradenih lopti: ");
+			String ukradeneLopteIgraca = tastatura.next();
+			System.out.println("Unesite broj blokada: ");
+			String brojBlokada = tastatura.next();
+
+			mapa.put(imeIgracaNovo, new Igrac(brojPoena, brojSkokova, brojAsistencija, ukradeneLopteIgraca, brojBlokada));
+
+			sacuvajIgraca(mapa, "izabrana_datoteka.txt");
+
+			System.out.println("Lista je sacuvana.");
+
+			tastatura.close();
 		}
 
-		System.out.println();
-
-		System.out.println("Unesite ime igraca i kategoriju koja Vas zanima: ");
-		System.out.println("(Npr. Bogdan_Bogdanovic,poeni)");
-
-		String podatak = tastatura.nextLine();
-		String [] deoPodatka = podatak.split(",");
-		String ime = deoPodatka[0];
-		String kategorija = deoPodatka[1];
-
-
-		if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("asistencije".trim())) {                              
-			System.out.println(mapa.get(ime).getAsistencije());									 
-
-		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("poeni".trim())) {
-			System.out.println(mapa.get(ime).getPoeni());
-
-		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("skokovi".trim())) {
-			System.out.println(mapa.get(ime).getSkokovi());
-
-		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("blokade".trim())) {
-			System.out.println(mapa.get(ime).getBlokade());
-
-		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("ukradene lopte".trim())) {
-			System.out.println(mapa.get(ime).getUkradeneLopte());
-		}
-		
-		System.out.println();
-
-		System.out.println("Unesite novog igraca na listu.");
-
-		System.out.println("Unesite  ime igraca: ");
-		String imeIgracaNovo = tastatura.next();
-		System.out.println("Unesite broj poena: ");
-		String brojPoena = tastatura.next();
-		System.out.println("Unestite broj skokova: ");
-		String brojSkokova = tastatura.next();
-		System.out.println("Unesite broj asistencija: ");
-		String brojAsistencija = tastatura.next();
-		System.out.println("Unesite broj ukradenih lopti: ");
-		String ukradeneLopteIgraca = tastatura.next();
-		System.out.println("Unesite broj blokada: ");
-		String brojBlokada = tastatura.next();
-
-		mapa.put(imeIgracaNovo, new Igrac(brojPoena, brojSkokova, brojAsistencija, ukradeneLopteIgraca, brojBlokada));
-
-		sacuvajIgraca(mapa, "izabrana_datoteka.txt");
-
-		System.out.println("Lista je sacuvana.");
-
-		tastatura.close();
 	}
-
 }
+
 
 
 
