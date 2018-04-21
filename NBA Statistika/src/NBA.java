@@ -104,40 +104,41 @@ public class NBA  {
 
 		String imeIgraca = tastatura.nextLine();
 
-		for (String kljuc : mapa.keySet()) {
-			if (imeIgraca.equalsIgnoreCase(kljuc)) {
-				Igrac vrednost = mapa.get(kljuc);
-				System.out.println("Statistika: " + kljuc + " " + vrednost);
-			}
+		Igrac vrednost;
+
+		if (mapa.containsKey(imeIgraca)) {
+			vrednost = mapa.get(imeIgraca);
+			System.out.println("Statistika: " + imeIgraca + " " + vrednost);
 		}
 
 		System.out.println();
 
 		System.out.println("Unesite ime igraca i kategoriju koja Vas zanima: ");
+		System.out.println("(Npr. Bogdan_Bogdanovic,poeni)");
 
 		String podatak = tastatura.nextLine();
 		String [] deoPodatka = podatak.split(",");
 		String ime = deoPodatka[0];
 		String kategorija = deoPodatka[1];
 
-		for (String kljuc : mapa.keySet()) {
-			if (ime.equalsIgnoreCase(kljuc) && kategorija.equalsIgnoreCase("asistencije".trim())) {        // ovo ne radi kako treba;
-				System.out.println(mapa.get(kljuc).getAsistencije());									   // prepoznaje ime, ali ne i kategoriju;
-				break;																					   // pomagaj!!!				
-			}else if (ime.equalsIgnoreCase(kljuc) && kategorija.equalsIgnoreCase("poeni".trim())) {
-				System.out.println(mapa.get(kljuc).getPoeni());
-				break;
-			}else if (ime.equalsIgnoreCase(kljuc) && kategorija.equalsIgnoreCase("skokovi".trim())) {
-				System.out.println(mapa.get(kljuc).getSkokovi());
-				break;
-			}else if (ime.equalsIgnoreCase(kljuc) && kategorija.equalsIgnoreCase("blokade".trim())) {
-				System.out.println(mapa.get(kljuc).getBlokade());
-				break;
-			}else if (ime.equalsIgnoreCase(kljuc) && kategorija.equalsIgnoreCase("ukradene lopte".trim())) {
-				System.out.println(mapa.get(kljuc).getUkradeneLopte());
-				break;
-			}
+
+		if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("asistencije".trim())) {                              
+			System.out.println(mapa.get(ime).getAsistencije());									 
+
+		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("poeni".trim())) {
+			System.out.println(mapa.get(ime).getPoeni());
+
+		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("skokovi".trim())) {
+			System.out.println(mapa.get(ime).getSkokovi());
+
+		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("blokade".trim())) {
+			System.out.println(mapa.get(ime).getBlokade());
+
+		}else if (mapa.containsKey(ime) && kategorija.equalsIgnoreCase("ukradene lopte".trim())) {
+			System.out.println(mapa.get(ime).getUkradeneLopte());
 		}
+		
+		System.out.println();
 
 		System.out.println("Unesite novog igraca na listu.");
 
