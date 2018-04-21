@@ -22,10 +22,9 @@ public class NBA  {
 
 				String red = tastatura.nextLine();
 
-				if (red.startsWith("name")) {
+				if (red.startsWith("name")) {	         
 				}
 				else  {
-
 					String igracPodaci = red ;
 
 					String [] deo = igracPodaci.split(",");
@@ -44,6 +43,7 @@ public class NBA  {
 				}	
 			}
 
+
 			tastatura.close();
 			try {
 				fis.close();
@@ -57,7 +57,7 @@ public class NBA  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mapa;
 
 	}
@@ -83,8 +83,8 @@ public class NBA  {
 	public static void main(String[] args) {
 
 
-		HashMap<String, Igrac> mapa = ucitajIgraca("C:\\Users\\Marko\\Desktop\\srpski_igraci_nba_2017_18 (1).csv");
 
+		HashMap<String, Igrac> mapa = ucitajIgraca("C:\\Users\\Marko\\Desktop\\srpski_igraci_nba_2017_18 (1).csv");
 
 
 		Scanner tastatura = new Scanner(System.in);
@@ -95,7 +95,7 @@ public class NBA  {
 
 		for (String kljuc : mapa.keySet()) {
 			Igrac vrednost = mapa.get(kljuc);
-			System.out.println(kljuc  + " " + vrednost);                           
+			System.out.println(kljuc + " " + vrednost);                           
 		}
 
 		System.out.println();
@@ -111,6 +111,7 @@ public class NBA  {
 			}
 		}
 
+		System.out.println();
 
 		System.out.println("Unesite ime igraca i kategoriju koja Vas zanima: ");
 
@@ -138,7 +139,7 @@ public class NBA  {
 			}
 		}
 
-		System.out.println("Unesite novog igraca na listu: ");
+		System.out.println("Unesite novog igraca na listu.");
 
 		System.out.println("Unesite  ime igraca: ");
 		String imeIgracaNovo = tastatura.next();
@@ -161,7 +162,9 @@ public class NBA  {
 
 		tastatura.close();
 	}
+
 }
+
 
 
 
