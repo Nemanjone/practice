@@ -1,0 +1,15 @@
+package nemanja.springframework.services;
+
+import nemanja.springframework.domain.Product;
+
+public interface ProductService {
+	
+	Iterable<Product> listAllProducts();
+	
+	Product getProductById(Integer id);
+	
+	Product saveProduct(Product product);
+	
+	void deleteProduct(Integer id);
+	
+}
