@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+    <link rel="stylesheet" type="text/css" href="../static/css/nemanja.css" />
+
+</head>
+<body>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+      
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/events}"><font size="5" color="black">All Events</font></a></li>
+                        
+                         <li><a href="#" th:href="@{/login}"><font size="5" color="black">Sign In</font> </a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        
+        <div class="welcome">
+            <span  sec:authorize="isAuthenticated()"> <font size= "5"> Welcome </font><font size="5"><span  sec:authentication= "name"></span></font></span>
+        </div>
+
+        <div class="jumbotron">
+            <div class="row text-center">
+                <div class="">
+                    <h2>Check out our</h2>
+				    <h3> <font size="8" style="color:green" >Upcoming events </font> </h3>
+                
+                </div>
+            </div>
+            <div class="row text-center">
+                <img src="../../static/images/gecko.png" width="200"
+                     th:src="@{/images/gecko.png}"/>
+            </div>
+        </div>    
+     </div>
+    
+  </div>
+
+</body>
+</html>

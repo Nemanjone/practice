@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+
+    <title>Upcoming events</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(events)}">
+        <form th:action="@{/logout}" method="post">
+            <div class="col-sm-10"><h2>Event Listing</h2></div>
+          
+        </form>
+        <table class="table table-striped">
+            <tr>
+                <th><font size="4">Id</font></th>
+                <th><font size="4">Event Name</font></th>
+                <th><font size="4">Created by</font></th>
+                <th><font size="4">Starting Date</font></th>
+                <th><font size="4">Starting time</font></th>
+                <th><font size="4">Place</font></th>              
+                <th sec:authorize="hasAnyAuthority('USER','ADMIN')"><font size="4">View</font></th>
+                <th sec:authorize="hasAuthority('ADMIN')"><font size="4">Edit</font></th>
+                <th sec:authorize="hasAuthority('ADMIN')"><font size="4">Delete</font></th>
+                <th sec:authorize="hasAnyAuthority('USER','ADMIN')"><font size="4">Add New</font></th>
+                <th sec:authorize="hasAnyAuthority('USER','ADMIN')"><font size="4" color="red">Sign up</font></th>
+            </tr>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.id}"><a href="/event/${event.id}"><font size="4">Id</font></a></td>
+                <td th:text="${event.eventName}"><font size="4">Event Name</font></td>
+                <td th:text="${event.createdBy}"><font size="4">Created by</font></td>
+                <td th:text="${event.startingDate}"><font size="4">Starting Date</font></td>
+                <td th:text="${event.startingTime}"><font>Starting Time</font></td>
+                <td th:text="${event.place}"><font size="4">Place</font></td>
+                
+                <td sec:authorize="hasAnyAuthority('USER','ADMIN')"><a th:href="${ '/event/show/' + event.id}"><font size="4">View</font></a></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="${'/event/edit/' + event.id}"><font size="4">Edit</font></a></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="${'/event/delete/' + event.id}"><font size="4">Delete</font></a></td>
+                <td sec:authorize="hasAnyAuthority('USER','ADMIN')"><a th:href="${ '/event/new/'}"><font size="4">Add New</font></a></td>
+              
+            </tr>
+        </table>
+       
+        <form th:action="@{/logout}" method="post">
+        <div class="col-sm-2" style="padding-top: 30px;">
+                     <span sec:authorize="isAuthenticated()">
+                   <font size="4"> <input  type="submit" value="Sign Out"/> </font>
+                     </span>
+       </div>
+        </form>
+       
+    </div>
+</div>
+
+</body>
+</html>
