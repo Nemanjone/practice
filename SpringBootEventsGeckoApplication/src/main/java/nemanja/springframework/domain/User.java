@@ -7,13 +7,13 @@ import java.util.List;
 @Entity
 public class User extends AbstractDomainClass  {
 
-    private String username;
+   private String username;
 
     @Transient
     private String password;
 
     private String encryptedPassword;
-    private Boolean enabled = true;
+    private Boolean enabled = true; 
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable

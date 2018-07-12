@@ -60,12 +60,14 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
            httpSecurity
-   		.authorizeRequests().antMatchers("/","/events", "/event/show/*", "/console/**").authenticated()
-   		.anyRequest().authenticated()
+   		.authorizeRequests().antMatchers("/","/members","/events", "/event/show/*", "/console/**").authenticated()
+   		//.anyRequest().authenticated()
    		.and()
-   		.formLogin().loginPage("/register").permitAll()
+   		.formLogin().loginPage("/").permitAll()
    		.and()
-   		.logout().permitAll();
+   		.logout().permitAll()
+   		.and().authorizeRequests().antMatchers("/register", "/login").permitAll();
+   		 
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();

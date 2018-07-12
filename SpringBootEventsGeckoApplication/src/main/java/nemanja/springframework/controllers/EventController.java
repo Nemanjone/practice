@@ -19,11 +19,11 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+ /*   @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listAll(Model model){
         model.addAttribute("events", eventService.listAllEvents());
-        return "events";
-    }
+        return "events"; 
+    }*/
     
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public String list(Model model){
@@ -63,6 +63,11 @@ public class EventController {
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
+         return "login";
+    }
+    
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginPost(){
          return "login";
     }
 
