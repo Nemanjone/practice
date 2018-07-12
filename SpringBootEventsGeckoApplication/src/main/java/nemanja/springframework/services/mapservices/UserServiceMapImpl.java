@@ -33,14 +33,15 @@ public class UserServiceMapImpl extends AbstractMapService implements UserServic
         return (User) super.getById(id);
     }
 
+    
     @Override
     public User saveOrUpdate(User domainObject) {
 
         if(domainObject.getPassword() != null){
-            domainObject.setEncryptedPassword(encryptionService.encryptString(domainObject.getPassword()));
+            domainObject.setPassword(encryptionService.encryptString(domainObject.getPassword()));
         }
 
-        return (User) super.saveOrUpdate(domainObject);
+        return (User) super.saveOrUpdate((DomainObject) domainObject);
     }
 
     @Override

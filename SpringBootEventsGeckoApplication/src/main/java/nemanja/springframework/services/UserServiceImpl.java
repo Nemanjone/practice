@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveOrUpdate(User domainObject) {
         if(domainObject.getPassword() != null){
-            domainObject.setEncryptedPassword(encryptionService.encryptString(domainObject.getPassword()));
+            domainObject.setPassword(encryptionService.encryptString(domainObject.getPassword()));
         }
         return userRepository.save(domainObject);
     }

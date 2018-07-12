@@ -1,6 +1,7 @@
 package nemanja.springframework.config;
 
-import org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,10 +11,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
+@EnableWebSecurity
 @Configuration
 public class SpringSecConfig extends WebSecurityConfigurerAdapter {
 
@@ -26,13 +29,13 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         this.authenticationProvider = authenticationProvider;
     }
 
-    @Bean
+   /* @Bean
     public PasswordEncoder passwordEncoder(StrongPasswordEncryptor passwordEncryptor){
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         passwordEncoder.setPasswordEncryptor(passwordEncryptor);
         return passwordEncoder;
-    }
-
+    }*/
+ 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(PasswordEncoder passwordEncoder,
                                                                UserDetailsService userDetailsService){
@@ -48,13 +51,19 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder.authenticationProvider(authenticationProvider);
     }
     
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+    
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
            httpSecurity
    		.authorizeRequests().antMatchers("/","/events", "/event/show/*", "/console/**").authenticated()
    		.anyRequest().authenticated()
    		.and()
-   		.formLogin().loginPage("/login").permitAll()
+   		.formLogin().loginPage("/register").permitAll()
    		.and()
    		.logout().permitAll();
 

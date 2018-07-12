@@ -1,6 +1,7 @@
 package nemanja.springframework.services.mapservices;
 
 import nemanja.springframework.domain.DomainObject;
+import nemanja.springframework.domain.User;
 
 import java.util.*;
 
@@ -15,8 +16,8 @@ public abstract class AbstractMapService  {
         return new ArrayList<>(domainMap.values());
     }
 
-    public DomainObject getById(Integer id) {
-        return domainMap.get(id);
+    public User getById(Integer id) {
+        return (User) domainMap.get(id);
     }
 
     public DomainObject saveOrUpdate(DomainObject domainObject) {
