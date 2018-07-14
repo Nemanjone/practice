@@ -1,6 +1,6 @@
 package nemanja.springframework.services.security;
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserService userService;
-    private Converter<User, UserDetails> userUserDetailsConverter;
+    private Converter<AppUser, UserDetails> userUserDetailsConverter;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -23,12 +23,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     @Qualifier(value = "userToUserDetails")
-    public void setUserUserDetailsConverter(Converter<User, UserDetails> userUserDetailsConverter) {
+    public void setUserUserDetailsConverter(Converter<AppUser, UserDetails> userUserDetailsConverter) {
         this.userUserDetailsConverter = userUserDetailsConverter;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userUserDetailsConverter.convert(userService.findByUsername(username));
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        return userUserDetailsConverter.convert(userService.findAppUserByUsername(userName));
     }
 }

@@ -1,7 +1,7 @@
 package nemanja.springframework.converters;
 
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.services.security.UserDetailsImpl;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Component
-public class UserToUserDetails implements Converter<User, UserDetails> {
+public class UserToUserDetails implements Converter<AppUser, UserDetails> {
     @Override
-    public UserDetails convert(User user) {
+    public UserDetails convert(AppUser user) {
         UserDetailsImpl userDetails = new UserDetailsImpl();
 
         if (user != null) {
-            userDetails.setUsername(user.getUsername());
-            userDetails.setPassword(user.getPassword());
-            userDetails.setEnabled(user.getEnabled());
+            userDetails.setUserName(user.getUserName());
+            userDetails.setEncrytedPassword(user.getEncrytedPassword());
+            userDetails.setEnabled(user.isEnabled());
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
             user.getRoles().forEach(role -> {
                 authorities.add(new SimpleGrantedAuthority(role.getRole()));

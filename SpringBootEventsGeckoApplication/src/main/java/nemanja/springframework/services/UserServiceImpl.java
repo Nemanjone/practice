@@ -1,6 +1,6 @@
 package nemanja.springframework.services;
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.repositories.UserRepository;
 import nemanja.springframework.services.UserService;
 import nemanja.springframework.services.security.EncryptionService;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,31 +32,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<?> listAll() {
-        List<User> users = new ArrayList<>();
+        List<AppUser> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add); 
         return users;
     }
 
     @Override
-    public User getById(Integer id) {
+    public AppUser getById(Integer id) {
         return userRepository.findOne(id);
     }
 
     @Override
-    public User saveOrUpdate(User domainObject) {
-        if(domainObject.getPassword() != null){
-            domainObject.setPassword(encryptionService.encryptString(domainObject.getPassword()));
+    public AppUser saveOrUpdate(AppUser domainObject) {
+        if(domainObject.getEncrytedPassword() != null){
+            domainObject.setEncrytedPassword(encryptionService.encryptString(domainObject.getEncrytedPassword()));
         }
         return userRepository.save(domainObject);
     }
     @Override
-      @Transactional
+    @Transactional
        public void delete(Integer id) {
         userRepository.delete(id);
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public AppUser findAppUserByUsername(String userName) {
+        return userRepository.findAppUserByUsername(userName);
     }
 }

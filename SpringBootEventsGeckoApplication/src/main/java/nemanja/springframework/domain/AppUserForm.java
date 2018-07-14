@@ -7,11 +7,10 @@ public class AppUserForm {
     private String firstName;
     private String lastName;
     private boolean enabled;
-    private String gender;
     private String email;
     private String password;
     private String confirmPassword;
-    private String countryCode;
+  
  
     public AppUserForm() {
  
@@ -71,13 +70,6 @@ public class AppUserForm {
         this.enabled = enabled;
     }
  
-    public String getGender() {
-        return gender;
-    }
- 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
  
     public String getEmail() {
         return email;
@@ -85,14 +77,6 @@ public class AppUserForm {
  
     public void setEmail(String email) {
         this.email = email;
-    }
- 
-    public String getCountryCode() {
-        return countryCode;
-    }
- 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
     }
  
     public String getPassword() {

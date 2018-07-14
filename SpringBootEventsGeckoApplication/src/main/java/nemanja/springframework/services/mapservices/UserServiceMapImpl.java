@@ -1,7 +1,7 @@
 package nemanja.springframework.services.mapservices;
 
 import nemanja.springframework.domain.DomainObject;
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.services.UserService;
 import nemanja.springframework.services.security.EncryptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +29,19 @@ public class UserServiceMapImpl extends AbstractMapService implements UserServic
     }
 
     @Override
-    public User getById(Integer id) {
-        return (User) super.getById(id);
+    public AppUser getById(Integer id) {
+        return (AppUser) super.getById(id);
     }
 
     
     @Override
-    public User saveOrUpdate(User domainObject) {
+    public AppUser saveOrUpdate(AppUser domainObject) {
 
-        if(domainObject.getPassword() != null){
-            domainObject.setPassword(encryptionService.encryptString(domainObject.getPassword()));
+        if(domainObject.getEncrytedPassword() != null){
+            domainObject.setEncrytedPassword(encryptionService.encryptString(domainObject.getEncrytedPassword()));
         }
 
-        return (User) super.saveOrUpdate((DomainObject) domainObject);
+        return (AppUser) super.saveOrUpdate((DomainObject) domainObject);
     }
 
     @Override
@@ -50,16 +50,16 @@ public class UserServiceMapImpl extends AbstractMapService implements UserServic
     }
 
     @Override
-    public User findByUsername(String userName) {
+    public AppUser findAppUserByUsername(String userName) {
 
         Optional returnUser =  domainMap.values().stream().filter(new Predicate<DomainObject>() {
             @Override
             public boolean test(DomainObject domainObject) {
-                User user = (User) domainObject;
-                return user.getUsername().equalsIgnoreCase(userName);
+                AppUser user = (AppUser) domainObject;
+                return user.getUserName().equalsIgnoreCase(userName);
             }
         }).findFirst();
 
-        return (User) returnUser.get();
+        return (AppUser) returnUser.get();
     }
 }

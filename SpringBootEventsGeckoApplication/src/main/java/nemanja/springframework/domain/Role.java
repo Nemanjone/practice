@@ -1,6 +1,7 @@
 package nemanja.springframework.domain;
 
 import nemanja.springframework.domain.AbstractDomainClass;
+import nemanja.springframework.model.AppUser;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
@@ -16,7 +17,7 @@ public class Role extends AbstractDomainClass {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
    
-    private List<User> users = new ArrayList<>();
+    private List<AppUser> users = new ArrayList<>();
 
     public String getRole() {
         return role;
@@ -26,15 +27,15 @@ public class Role extends AbstractDomainClass {
         this.role = role;
     }
 
-    public List<User> getUsers() {
+    public List<AppUser> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<AppUser> users) {
         this.users = users;
     }
 
-    public void addUser(User user){
+    public void addUser(AppUser user){
         if(!this.users.contains(user)){
             this.users.add(user);
         }
@@ -44,7 +45,7 @@ public class Role extends AbstractDomainClass {
         }
     }
 
-    public void removeUser(User user){
+    public void removeUser(AppUser user){
         this.users.remove(user);
         user.getRoles().remove(this);
     }

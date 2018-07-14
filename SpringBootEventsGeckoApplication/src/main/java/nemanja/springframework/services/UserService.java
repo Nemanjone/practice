@@ -1,9 +1,9 @@
 package nemanja.springframework.services;
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 
-public interface UserService extends CRUDService<User> {
+public interface UserService extends CRUDService<AppUser> {
 
-    User findByUsername(String username);
+    AppUser findAppUserByUsername(String userName);
 
 }

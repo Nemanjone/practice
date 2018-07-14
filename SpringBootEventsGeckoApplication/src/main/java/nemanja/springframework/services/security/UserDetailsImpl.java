@@ -12,7 +12,7 @@ public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	private Collection<SimpleGrantedAuthority> authorities;
-    private String username;
+    private String userName;
     private String password;
     private Boolean enabled = true;
 
@@ -20,11 +20,11 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setPassword(String password) {
+    public void setEncrytedPassword(String password) {
         this.password = password;
     }
 
@@ -44,7 +44,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     @Override

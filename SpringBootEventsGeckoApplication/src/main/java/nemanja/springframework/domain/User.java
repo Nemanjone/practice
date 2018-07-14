@@ -3,7 +3,7 @@ package nemanja.springframework.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 @Entity
 public class User extends AbstractDomainClass  {
 
@@ -68,10 +68,10 @@ public class User extends AbstractDomainClass  {
             this.roles.add(role);
         }
 
-        if(!role.getUsers().contains(this)){
-            role.getUsers().add(this);
+        //if(!role.getUsers().contains(this)){
+          //  role.getUsers().add(this);
         }
-    }
+    //}
 
     public void removeRole(Role role){
         this.roles.remove(role);
@@ -85,5 +85,5 @@ public class User extends AbstractDomainClass  {
     public void setFailedLoginAttempts(Integer failedLoginAttempts) {
         this.failedLoginAttempts = failedLoginAttempts;
     }
-}
+}*/
 

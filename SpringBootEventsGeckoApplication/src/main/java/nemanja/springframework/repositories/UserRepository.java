@@ -1,9 +1,10 @@
 package nemanja.springframework.repositories;
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import org.springframework.data.repository.CrudRepository;
 import java.lang.String;
 
-public interface UserRepository extends CrudRepository<User, Integer>{
-        User findByUsername(String username);
+
+public interface UserRepository extends CrudRepository<AppUser, Integer>{
+	AppUser findAppUserByUsername(String userName);
 }

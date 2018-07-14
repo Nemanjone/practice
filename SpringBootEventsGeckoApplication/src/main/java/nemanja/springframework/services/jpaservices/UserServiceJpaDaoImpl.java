@@ -1,12 +1,11 @@
 package nemanja.springframework.services.jpaservices;
 
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.services.UserService;
 import nemanja.springframework.services.security.EncryptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -26,27 +25,27 @@ public class UserServiceJpaDaoImpl extends AbstractJpaDaoService implements User
     public List<?> listAll() {
         EntityManager em = emf.createEntityManager();
 
-        return em.createQuery("from User", User.class).getResultList();
+        return em.createQuery("from User", AppUser.class).getResultList();
     }
 
     @Override
-    public User getById(Integer id) {
+    public AppUser getById(Integer id) {
         EntityManager em = emf.createEntityManager();
 
-        return em.find(User.class, id);
+        return em.find(AppUser.class, id);
     }
 
     @Override
-    public User saveOrUpdate(User domainObject) {
+    public AppUser saveOrUpdate(AppUser domainObject) {
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        if(domainObject.getPassword() != null){
-            domainObject.setPassword(encryptionService.encryptString(domainObject.getPassword()));
+        if(domainObject.getEncrytedPassword() != null){
+            domainObject.setEncrytedPassword(encryptionService.encryptString(domainObject.getEncrytedPassword()));
         }
 
-        User saveduser = em.merge(domainObject);
+        AppUser saveduser = em.merge(domainObject);
         em.getTransaction().commit();
 
         return saveduser;
@@ -57,14 +56,14 @@ public class UserServiceJpaDaoImpl extends AbstractJpaDaoService implements User
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
-        em.remove(em.find(User.class, id));
+        em.remove(em.find(AppUser.class, id));
         em.getTransaction().commit();
     }
 
     @Override
-    public User findByUsername(String userName) {
+    public AppUser findAppUserByUsername(String userName) {
         EntityManager em = emf.createEntityManager();
 
-        return em.createQuery("from User where userName = :userName", User.class).setParameter("userName", userName).getSingleResult();
+        return em.createQuery("from User where userName = :userName", AppUser.class).setParameter("userName", userName).getSingleResult();
     }
 }

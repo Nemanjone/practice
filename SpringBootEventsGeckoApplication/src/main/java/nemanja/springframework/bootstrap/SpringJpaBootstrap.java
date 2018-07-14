@@ -2,7 +2,7 @@ package nemanja.springframework.bootstrap;
 
 import nemanja.springframework.domain.Event;
 import nemanja.springframework.domain.Role;
-import nemanja.springframework.domain.User;
+import nemanja.springframework.model.AppUser;
 import nemanja.springframework.repositories.EventRepository;
 import nemanja.springframework.services.RoleService;
 import nemanja.springframework.services.UserService;
@@ -75,16 +75,22 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     }
 
     private void loadUsers() {
-        User user1 = new User();
-        user1.setUsername("user");
-        user1.setPassword("user");
+        AppUser user1 = new AppUser();
+        user1.setUserId(2L);
+        user1.setUserName("user");
+        user1.setEncrytedPassword("user");
+        user1.setFirstName("Nemanja");
+        user1.setLastName("Balaban");
+        user1.setEnabled(true);
+        user1.setEmail("user@gmail.com");
+        user1.setEncrytedPassword("123");
         userService.saveOrUpdate(user1);
 
-        User user2 = new User();
-        user2.setUsername("admin");
-        user2.setPassword("admin");
+       /* AppUser user2 = new AppUser();
+        user2.setUserName("admin");
+        user2.setEncrytedPassword("admin");
         userService.saveOrUpdate(user2);
-
+*/
     }
 
     private void loadRoles() {
@@ -100,12 +106,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     }
     private void assignUsersToUserRole() {
         List<Role> roles = (List<Role>) roleService.listAll();
-        List<User> users = (List<User>) userService.listAll();
+        List<AppUser> users = (List<AppUser>) userService.listAll();
 
         roles.forEach(role -> {
             if (role.getRole().equalsIgnoreCase("USER")) {
                 users.forEach(user -> {
-                    if (user.getUsername().equals("user")) {
+                    if (user.getUserName().equals("user")) {
                         user.addRole(role);
                         userService.saveOrUpdate(user);
                     }
@@ -115,12 +121,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     }
     private void assignUsersToAdminRole() {
         List<Role> roles = (List<Role>) roleService.listAll();
-        List<User> users = (List<User>) userService.listAll();
+        List<AppUser> users = (List<AppUser>) userService.listAll();
 
         roles.forEach(role -> {
             if (role.getRole().equalsIgnoreCase("ADMIN")) {
                 users.forEach(user -> {
-                    if (user.getUsername().equals("admin")) {
+                    if (user.getUserName().equals("admin")) {
                         user.addRole(role);
                         userService.saveOrUpdate(user);
                     }

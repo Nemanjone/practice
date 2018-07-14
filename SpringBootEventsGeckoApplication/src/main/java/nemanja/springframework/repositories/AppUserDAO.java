@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import nemanja.springframework.domain.AppUserForm;
 import nemanja.springframework.model.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
