@@ -1,0 +1,10 @@
+{
+    "cypress-cucumber-preprocessor": {
+      "nonGlobalStepDefinitions": true
+      },
+      "testFiles": "**/*.{feature,features}",
+        "reporter": "cypress-multi-reporters",
+        "reporterOptions": {
+          "configFile": "reporter-config.json"
+        }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="121.7650" tests="4" failures="1">
+  <testsuite name="Root Suite" timestamp="2020-02-16T15:38:11" tests="0" file="cypress\integration\GeorgeSearchBar.feature" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="George Search Bar" timestamp="2020-02-16T15:38:11" tests="4" time="121.7650" failures="1">
+    <testcase name="George Search Bar Check the result of the search for Erste" time="40.9640" classname="Check the result of the search for Erste">
+    </testcase>
+    <testcase name="George Search Bar Send empty string to Search Bar" time="41.5670" classname="Send empty string to Search Bar">
+    </testcase>
+    <testcase name="George Search Bar Send invalid charactes to Search Bar" time="39.2340" classname="Send invalid charactes to Search Bar">
+    </testcase>
+    <testcase name="George Search Bar Send Lorem ipsum to Search Bar" time="0.0000" classname="Send Lorem ipsum to Search Bar">
+      <failure message="Timed out retrying: cy.wait() timed out waiting 40000ms for the 1st response to the route: &apos;loggedIn&apos;. No response ever occurred." type="CypressError"><![CDATA[CypressError: Timed out retrying: cy.wait() timed out waiting 40000ms for the 1st response to the route: 'loggedIn'. No response ever occurred.
+    at cypressErr (https://george.csas.cz/__cypress/runner/cypress_runner.js:149934:9)
+    at throwErr (https://george.csas.cz/__cypress/runner/cypress_runner.js:149867:11)
+    at Object.throwErrByPath (https://george.csas.cz/__cypress/runner/cypress_runner.js:149915:3)
+    at Object.retry (https://george.csas.cz/__cypress/runner/cypress_runner.js:144197:19)
+    at checkForXhr (https://george.csas.cz/__cypress/runner/cypress_runner.js:140531:17)
+    at https://george.csas.cz/__cypress/runner/cypress_runner.js:140532:28
+    at tryCatcher (https://george.csas.cz/__cypress/runner/cypress_runner.js:167415:23)
+    at Function.Promise.attempt.Promise.try (https://george.csas.cz/__cypress/runner/cypress_runner.js:164690:29)
+    at tryFn (https://george.csas.cz/__cypress/runner/cypress_runner.js:144661:21)
+    at whenStable (https://george.csas.cz/__cypress/runner/cypress_runner.js:144696:12)
+    at https://george.csas.cz/__cypress/runner/cypress_runner.js:144240:16
+    at tryCatcher (https://george.csas.cz/__cypress/runner/cypress_runner.js:167415:23)
+    at Promise._settlePromiseFromHandler (https://george.csas.cz/__cypress/runner/cypress_runner.js:165351:31)
+    at Promise._settlePromise (https://george.csas.cz/__cypress/runner/cypress_runner.js:165408:18)
+    at Promise._settlePromise0 (https://george.csas.cz/__cypress/runner/cypress_runner.js:165453:10)
+    at Promise._settlePromises (https://george.csas.cz/__cypress/runner/cypress_runner.js:165532:18)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
